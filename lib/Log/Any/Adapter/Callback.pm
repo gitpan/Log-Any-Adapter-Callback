@@ -1,6 +1,6 @@
 package Log::Any::Adapter::Callback;
 BEGIN {
-  $Log::Any::Adapter::Callback::VERSION = '0.01';
+  $Log::Any::Adapter::Callback::VERSION = '0.02';
 }
 # ABSTRACT: Send Log::Any logs to a subroutine
 
@@ -42,7 +42,7 @@ Log::Any::Adapter::Callback - Send Log::Any logs to a subroutine
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -58,8 +58,9 @@ This adapter lets you specify callback subroutine to be called by Log::Any's
 logging methods (like $log->debug(), $log->error(), etc) and detection methods
 (like $log->is_warning(), $log->is_fatal(), etc.).
 
-This is mostly a convenient construct and saves a few lines of code, because so
-you don't have to create a full Log::Any adapter class.
+This adapter is used for customized logging, and is mostly a convenient
+construct to save a few lines of code. You could achieve the same effect by
+creating a full Log::Any adapter class.
 
 Your logging callback subroutine will be called with these arguments:
 
