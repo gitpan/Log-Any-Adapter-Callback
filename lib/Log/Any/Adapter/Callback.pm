@@ -1,6 +1,6 @@
 package Log::Any::Adapter::Callback;
-BEGIN {
-  $Log::Any::Adapter::Callback::VERSION = '0.02';
+{
+  $Log::Any::Adapter::Callback::VERSION = '0.03';
 }
 # ABSTRACT: Send Log::Any logs to a subroutine
 
@@ -10,6 +10,22 @@ use warnings;
 
 use Log::Any::Adapter::Util qw(make_method);
 use base qw(Log::Any::Adapter::Base);
+
+my @logging_methods = Log::Any->logging_methods;
+my %logging_levels;
+for my $i (0..@logging_methods-1) {
+    $logging_levels{$logging_methods[$i]} = $i;
+}
+
+sub _default_level {
+    return $ENV{LOG_LEVEL}
+        if $ENV{LOG_LEVEL} && $logging_levels{$ENV{LOG_LEVEL}};
+    return 'trace' if $ENV{TRACE};
+    return 'debug' if $ENV{DEBUG};
+    return 'info'  if $ENV{VERBOSE};
+    return 'error' if $ENV{QUIET};
+    'warning';
+}
 
 my ($logging_cb, $detection_cb);
 sub init {
@@ -21,14 +37,26 @@ sub init {
     } else {
         $detection_cb = sub { 1 };
     }
+    $self->{min_level} //= _default_level();
 }
 
 for my $method (Log::Any->logging_methods()) {
-    make_method($method, sub { $logging_cb->($method, @_) });
+    make_method(
+        $method,
+        sub {
+            my $self = shift;
+            return if $logging_levels{$method} <
+                $logging_levels{ $self->{min_level} };
+            $logging_cb->($method, $self, @_);
+        });
 }
 
 for my $method (Log::Any->detection_methods()) {
-    make_method($method, sub { $detection_cb->($method, @_) });
+    make_method(
+        $method,
+        sub {
+            $detection_cb->($method, @_);
+        });
 }
 
 1;
@@ -42,13 +70,22 @@ Log::Any::Adapter::Callback - Send Log::Any logs to a subroutine
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
+ # say, let's POST each log message to an HTTP API server
+ use LWP::UserAgent;
+ my $ua = LWP::UserAgent->new;
+
  use Log::Any::Adapter;
  Log::Any::Adapter->set('Callback',
-     logging_cb   => sub { ... },
+     min_level    => 'warn',
+     logging_cb   => sub {
+         my ($method, $self, $format, @params) = @_;
+         $ua->post("https://localdomain/log", level=>$method, Content=>$format);
+         sleep 1; # don't overload the server
+     },
      detection_cb => sub { ... }, # optional, default is: sub { 1 }
  );
 
