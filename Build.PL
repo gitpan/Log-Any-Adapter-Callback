@@ -17,15 +17,14 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Log-Any-Adapter-Callback",
-  "dist_version" => "0.03",
+  "dist_version" => "0.04",
   "license" => "perl",
   "module_name" => "Log::Any::Adapter::Callback",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
     "Log::Any::Adapter" => 0,
-    "Test::More" => "0.96",
-    "perl" => "5.010000"
+    "Test::More" => "0.96"
   },
   "script_files" => []
 );
