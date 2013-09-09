@@ -2,21 +2,20 @@
 abstract: 'Send Log::Any logs to a subroutine'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
-build_requires:
-  Module::Build: 0.3601
+build_requires: {}
 configure_requires:
-  Module::Build: 0.3601
+  ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
+generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.131560'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Log-Any-Adapter-Callback
 requires:
-  Log::Any::Adapter: 0
-  Test::More: 0.96
+  Log::Any::Adapter::Base: 0
+  Log::Any::Adapter::Util: 0
 resources:
   homepage: http://search.cpan.org/dist/Log-Any-Adapter-Callback/
   repository: http://github.com/sharyanto/perl-Log-Any-Adapter-Callback
-version: 0.04
+version: 0.05

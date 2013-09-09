@@ -1,14 +1,12 @@
 package Log::Any::Adapter::Callback;
-{
-  $Log::Any::Adapter::Callback::VERSION = '0.04';
-}
-# ABSTRACT: Send Log::Any logs to a subroutine
 
 use strict;
 use warnings;
 
 use Log::Any::Adapter::Util qw(make_method);
 use base qw(Log::Any::Adapter::Base);
+
+our $VERSION = '0.05'; # VERSION
 
 my @logging_methods = Log::Any->logging_methods;
 my %logging_levels;
@@ -59,7 +57,9 @@ for my $method (Log::Any->detection_methods()) {
 }
 
 1;
+# ABSTRACT: Send Log::Any logs to a subroutine
 
+__END__
 
 =pod
 
@@ -69,7 +69,7 @@ Log::Any::Adapter::Callback - Send Log::Any logs to a subroutine
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -117,13 +117,9 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Steven Haryanto.
+This software is copyright (c) 2013 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-
