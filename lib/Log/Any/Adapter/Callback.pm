@@ -6,7 +6,7 @@ use warnings;
 use Log::Any::Adapter::Util qw(make_method);
 use base qw(Log::Any::Adapter::Base);
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 my @logging_methods = Log::Any->logging_methods;
 my %logging_levels;
@@ -69,7 +69,7 @@ Log::Any::Adapter::Callback - Send Log::Any logs to a subroutine
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
