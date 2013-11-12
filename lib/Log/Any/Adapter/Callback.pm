@@ -6,7 +6,7 @@ use warnings;
 use Log::Any::Adapter::Util qw(make_method);
 use base qw(Log::Any::Adapter::Base);
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 my @logging_methods = Log::Any->logging_methods;
 my %logging_levels;
@@ -63,13 +63,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Log::Any::Adapter::Callback - Send Log::Any logs to a subroutine
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -105,11 +107,32 @@ Your logging callback subroutine will be called with these arguments:
 where $method is the name of method (like "debug") and ($self, $format, @params)
 are given by Log::Any.
 
+=head1 FUNCTIONS
+
+
+None are exported by default, but they are exportable.
+
 =for Pod::Coverage init
 
 =head1 SEE ALSO
 
 L<Log::Any>
+
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/Log-Any-Adapter-Callback>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-Log-Any-Adapter-Callback>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=Log-Any-Adapter-Callback>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 =head1 AUTHOR
 
