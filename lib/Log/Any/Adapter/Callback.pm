@@ -6,7 +6,7 @@ use warnings;
 use Log::Any::Adapter::Util qw(make_method);
 use base qw(Log::Any::Adapter::Base);
 
-our $VERSION = '0.07'; # VERSION
+our $VERSION = '0.08'; # VERSION
 
 my @logging_methods = Log::Any->logging_methods;
 my %logging_levels;
@@ -71,7 +71,7 @@ Log::Any::Adapter::Callback - Send Log::Any logs to a subroutine
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -107,11 +107,6 @@ Your logging callback subroutine will be called with these arguments:
 where $method is the name of method (like "debug") and ($self, $format, @params)
 are given by Log::Any.
 
-=head1 FUNCTIONS
-
-
-None are exported by default, but they are exportable.
-
 =for Pod::Coverage init
 
 =head1 SEE ALSO
@@ -140,7 +135,7 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Steven Haryanto.
+This software is copyright (c) 2014 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

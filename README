@@ -2,7 +2,7 @@ NAME
     Log::Any::Adapter::Callback - Send Log::Any logs to a subroutine
 
 VERSION
-    version 0.07
+    version 0.08
 
 SYNOPSIS
      # say, let's POST each log message to an HTTP API server
@@ -36,9 +36,6 @@ DESCRIPTION
     where $method is the name of method (like "debug") and ($self, $format,
     @params) are given by Log::Any.
 
-FUNCTIONS
-    None are exported by default, but they are exportable.
-
 SEE ALSO
     Log::Any
 
@@ -62,7 +59,7 @@ AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2013 by Steven Haryanto.
+    This software is copyright (c) 2014 by Steven Haryanto.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
